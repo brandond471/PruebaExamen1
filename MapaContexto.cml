@@ -1,0 +1,20 @@
+BoundedContext GestionOrdenes
+BoundedContext GestionPagos
+BoundedContext GestionInventario
+BoundedContext GestionPromociones
+BoundedContext GestionUsuarios
+
+ContextMap E_Commerce_ContextMap {
+
+contains GestionOrdenes, GestionPagos, GestionInventario, GestionPromociones, GestionUsuarios
+
+GestionUsuarios -> GestionPromociones
+GestionUsuarios [U]->[D,ACL] GestionPagos
+GestionPromociones [U]->[D,ACL] GestionPagos
+GestionInventario [U]->[D,ACL] GestionPagos
+GestionOrdenes [U]->[D,ACL] GestionPagos
+GestionUsuarios [U]->[D,ACL] GestionOrdenes
+GestionInventario [U]->[D,CF] GestionPromociones
+GestionInventario -> GestionOrdenes 
+
+}
